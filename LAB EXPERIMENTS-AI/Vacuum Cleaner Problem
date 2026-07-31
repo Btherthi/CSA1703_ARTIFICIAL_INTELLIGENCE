@@ -1,0 +1,28 @@
+def vacuum_cleaner(roomA, roomB):
+    rooms = {"A": roomA, "B": roomB}
+
+    print("Initial State:")
+    print(rooms)
+
+    location = "A"
+
+    while True:
+        if rooms[location] == "Dirty":
+            print(f"Cleaning Room {location}")
+            rooms[location] = "Clean"
+        else:
+            print(f"Room {location} is already Clean")
+
+        if location == "A":
+            location = "B"
+        else:
+            break
+
+    print("\nFinal State:")
+    print(rooms)
+
+
+
+
+Output
+     
