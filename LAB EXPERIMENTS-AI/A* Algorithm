@@ -1,0 +1,37 @@
+graph = {
+    'A': [('B',1),('C',3)],
+    'B': [('D',3),('E',5)],
+    'C': [('F',2)],
+    'D': [],
+    'E': [('F',1)],
+    'F': []
+}
+
+heuristic = {
+    'A':6,
+    'B':4,
+    'C':2,
+    'D':3,
+    'E':1,
+    'F':0
+}
+
+open_list=[('A',0)]
+visited=set()
+
+while open_list:
+    open_list. Sort(key=lambda x:x[1]+heuristic[x[0]])
+    node, cost=open_list. Pop(0)
+
+    if node=='F':
+        print("Goal Reached:”, node)
+        print("Cost:”, cost)
+        break
+
+    visited. Add(node)
+
+    for neighbor,w in graph[node]:
+        if neighbor not in visited:
+            open_list. Append((neighbor, cost+w))
+
+
