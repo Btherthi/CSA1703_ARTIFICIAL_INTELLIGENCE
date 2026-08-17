@@ -1,0 +1,38 @@
+states=['A','B','C','D']
+
+neighbors={
+'A':['B','C'],
+'B':['A','C','D'],
+'C':['A','B','D'],
+'D':['B','C']
+}
+
+colors=['Red','Green','Blue']
+
+solution={}
+
+def valid(state, color):
+    for n in neighbors[state]:
+     if n in solution and solution[n]==color:
+      return False
+    return True
+
+def solve(index):
+    if index==len(states):
+     return True
+
+    state=states[index]
+
+    for color in colors:
+     if valid(state,color):
+       solution[state]=color
+      if solve(index+1):
+       return True
+            del solution[state]
+    return False
+
+solve(0)
+
+print(solution)
+Sample Output
+{'A': 'Red', 'B': 'Green', 'C': 'Blue', 'D': 'Red'}
